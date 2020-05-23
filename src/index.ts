@@ -48,6 +48,7 @@ try {
                     core.setFailed(error);
                 } else {
                     if (response.statusCode === 200) {
+                        console.log('Annotation sent')
                         core.setOutput("result", body);
                     } else {
                         core.setFailed(`HTTP status: ${response.statusCode}`);
@@ -60,5 +61,6 @@ try {
 
     // 
 } catch (error) {
+    console.log(error);
     core.setFailed(error.message);
 }
