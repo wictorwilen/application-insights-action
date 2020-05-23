@@ -1,0 +1,35 @@
+{
+  "name": "application-insights-action",
+  "version": "1.0.0",
+  "description": "Application Insights helper for Github Actions",
+  "main": "dist/index.js",
+  "scripts": {
+    "compile": "tsc -p .",
+    "build": "./node_modules/.bin/ncc build ./src/index.ts --minify"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wictorwilen/application-insights-action.git"
+  },
+  "keywords": [
+    "github"
+  ],
+  "author": "Wictor Wilén (wictor@wictorwilen.se)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wictorwilen/application-insights-action/issues"
+  },
+  "homepage": "https://github.com/wictorwilen/application-insights-action#readme",
+  "dependencies": {
+    "@actions/core": "^1.2.4",
+    "@actions/github": "^2.2.0",
+    "request": "^2.88.2",
+    "uuid": "^8.1.0"
+  },
+  "devDependencies": {
+    "@types/request": "^2.48.5",
+    "@types/uuid": "^8.0.0",
+    "@zeit/ncc": "^0.22.3",
+    "typescript": "^3.9.3"
+  }
+}

@@ -1,0 +1,21 @@
+name: "Application Insights Annotations"
+description: "Writes Annoations to Application Insights"
+inputs:
+  applicationId:
+    description: "Application Insights App Id"
+    required: true
+  apiKey:
+    description: "Application Insights API Key, with Write Annotations permissions"
+    required: true
+  releaseName:
+    description: "Name of release"
+    required: true
+  message:
+    description: "Optional message"
+    required: false
+outputs:
+  result:
+    description: "Result"
+runs:
+  using: "node12"
+  main: "dist/index.js"
