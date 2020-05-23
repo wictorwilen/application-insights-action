@@ -13,6 +13,10 @@ inputs:
   message:
     description: "Optional message"
     required: false
+  actor:
+    description: "Actor who did annotation (ex `github.actor`)"
+    required: false
+    default: "Github workflow"
 outputs:
   result:
     description: "Result"

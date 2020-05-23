@@ -16,6 +16,7 @@ async function run(): Promise<void> {
         const apiKey = core.getInput('apiKey');
         const releaseName = core.getInput('releaseName');
         const message = core.getInput('message');
+        const actor = core.getInput('actor');
 
         core.debug(`Locating endpoint`)
         request(startUrl, { followRedirect: false }, (error, response, body) => {
@@ -28,7 +29,7 @@ async function run(): Promise<void> {
                 const releaseProperties = {
                     ReleaseName: releaseName,
                     Message: message,
-                    By: "Github Workflow"
+                    By: actor
                 };
 
                 const body = {

@@ -12,10 +12,11 @@ jobs:
         uses: ./
         id: annotation
         with:
-          applicationId: ${{secrets.APPLICATION_ID}}
+          applicationId: ${{ secrets.APPLICATION_ID }}
           apiKey: ${{secrets.API_KEY}}
-          releaseName: "Test release"
-          message: "I'm just happy if it works"
+          releaseName: ${{ github.event_name }}
+          message: ${{ github.ref }}
+          actor: ${{ github.actor }}
 
       - name: Get the output time
         run: echo "The time was ${{ steps.annotation.outputs.time }}"
