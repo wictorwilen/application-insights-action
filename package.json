@@ -25,7 +25,7 @@
   "dependencies": {
     "@actions/core": "^1.2.4",
     "@actions/github": "^2.2.0",
-    "@microsoft/applicationinsights-core-js": "^2.5.4",
+    "applicationinsights": "^1.7.5",
     "request": "^2.88.2",
     "uuid": "^8.1.0"
   },
