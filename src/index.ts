@@ -27,6 +27,7 @@ async function run(): Promise<void> {
             if (error) {
                 console.log('Redirect failed');
                 ai.defaultClient.trackException(error);
+                ai.defaultClient.flush();
                 core.setFailed(error);
             } else {
                 const location = response.headers['location'];
@@ -60,6 +61,7 @@ async function run(): Promise<void> {
                     if (error) {
                         console.log('Annotation failed');
                         ai.defaultClient.trackException(error);
+                        ai.defaultClient.flush();
                         core.setFailed(error);
                     } else {
                         if (response.statusCode === 200) {
@@ -67,12 +69,14 @@ async function run(): Promise<void> {
                             ai.defaultClient.trackEvent({
                                 name: "AnnotationSent",
                             });
+                            ai.defaultClient.flush();
                             core.setOutput("result", body);
                         } else {
                             ai.defaultClient.trackException({
                                 exception:
                                     { name: "Unexpected annotation response", message: response.statusMessage }
                             });
+                            ai.defaultClient.flush();
                             core.setFailed(`HTTP status: ${response.statusCode}`);
                         }
                     }
@@ -82,6 +86,7 @@ async function run(): Promise<void> {
     }
     catch (error) {
         ai.defaultClient.trackException(error);
+        ai.defaultClient.flush();
         console.log(error);
         core.setFailed(error.message);
     }
