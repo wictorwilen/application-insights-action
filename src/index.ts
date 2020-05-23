@@ -9,13 +9,15 @@ import request from 'request';
 const startUrl = 'http://go.microsoft.com/fwlink/?prd=11901&pver=1.0&sbp=Application%20Insights&plcid=0x409&clcid=0x409&ar=Annotations&sar=Create%20Annotation';
 
 
-async function run() {
+async function run(): Promise<void> {
     try {
+        core.debug(`Reading settings`)
         const applicationId = core.getInput('applicationId');
         const apiKey = core.getInput('apiKey');
         const releaseName = core.getInput('releaseName');
         const message = core.getInput('message');
 
+        core.debug(`Locating endpoint`)
         request(startUrl, { followRedirect: false }, (error, response, body) => {
             if (error) {
                 console.log('Redirect failed');
@@ -47,6 +49,7 @@ async function run() {
                     json: true
                 };
 
+                core.debug(`Sending annotation`)
                 request(options, (error, response, body) => {
                     if (error) {
                         console.log('Annotation failed');

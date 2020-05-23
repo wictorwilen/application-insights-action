@@ -4,15 +4,17 @@
   "description": "Application Insights helper for Github Actions",
   "main": "dist/index.js",
   "scripts": {
-    "compile": "tsc -p .",
-    "build": "./node_modules/.bin/ncc build ./src/index.ts --minify"
+    "build": "tsc -p .",
+    "pack": "./node_modules/.bin/ncc build ./src/index.ts --minify"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/wictorwilen/application-insights-action.git"
   },
   "keywords": [
-    "github"
+    "actions",
+    "node",
+    "application-insights"
   ],
   "author": "Wictor Wilén (wictor@wictorwilen.se)",
   "license": "MIT",
