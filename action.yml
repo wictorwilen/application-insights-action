@@ -1,4 +1,5 @@
 name: "Application Insights Annotations"
+author: "Wictor Wilén"
 description: "Writes Annoations to Application Insights"
 inputs:
   applicationId:
@@ -23,3 +24,6 @@ outputs:
 runs:
   using: "node12"
   main: "dist/index.js"
+branding:
+  icon: calendar
+  color: green
