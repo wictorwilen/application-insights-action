@@ -1,6 +1,6 @@
 // Copyright (c) Wictor Wilén. All rights reserved. 
 // Licensed under the MIT license.
-import core from '@actions/core';
+import * as core from '@actions/core';
 import github from '@actions/github';
 import { v4 } from 'uuid';
 import request from 'request';
