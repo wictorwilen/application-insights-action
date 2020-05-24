@@ -11,10 +11,12 @@ const startUrl = 'http://go.microsoft.com/fwlink/?prd=11901&pver=1.0&sbp=Applica
 
 async function run(): Promise<void> {
 
+    // Telemetry for usage of the Github Action - does not track who or why or what - just that someone used it.
     ai.setup("9d21cda9-51e5-4257-83ab-c16261b1bf4e");
+    ai.defaultClient.commonProperties = {
+        version: "1"
+    };
     try {
-
-
         core.debug(`Reading settings`)
         const applicationId = core.getInput('applicationId');
         const apiKey = core.getInput('apiKey');
@@ -22,6 +24,7 @@ async function run(): Promise<void> {
         const message = core.getInput('message');
         const actor = core.getInput('actor');
 
+        // Use the go.microsoft.com forward link to find the endpoint
         core.debug(`Locating endpoint`)
         request(startUrl, { followRedirect: false }, (error, response, body) => {
             if (error) {
@@ -46,8 +49,7 @@ async function run(): Promise<void> {
                     Properties: JSON.stringify(releaseProperties)
                 };
                 const options = {
-                    url: 'https://aigs1.aisvc.visualstudio.com/applications/'
-                        + applicationId + '/Annotations?api-version=2015-11',
+                    url: location + applicationId + '/Annotations?api-version=2015-11',
                     method: 'PUT',
                     headers: {
                         'X-AIAPIKEY': apiKey
@@ -57,6 +59,7 @@ async function run(): Promise<void> {
                 };
 
                 core.debug(`Sending annotation`)
+                // Using request (deprecated) since it's the only http client that manges the SSL issues with the endpoint
                 request(options, (error, response, body) => {
                     if (error) {
                         console.log('Annotation failed');
