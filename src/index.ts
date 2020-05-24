@@ -49,7 +49,7 @@ async function run(): Promise<void> {
                     Properties: JSON.stringify(releaseProperties)
                 };
                 const options = {
-                    url: location + applicationId + '/Annotations?api-version=2015-11',
+                    url: location + "/" + applicationId + '/Annotations?api-version=2015-11',
                     method: 'PUT',
                     headers: {
                         'X-AIAPIKEY': apiKey
