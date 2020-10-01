@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/wictorwilen/application-insights-action#readme",
   "dependencies": {
-    "@actions/core": "^1.2.4",
+    "@actions/core": "^1.2.6",
     "@actions/github": "^2.2.0",
     "applicationinsights": "^1.7.5",
     "request": "^2.88.2",
