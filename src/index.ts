@@ -67,7 +67,7 @@ async function run(): Promise<void> {
                         ai.defaultClient.flush();
                         core.setFailed(error);
                     } else {
-                        if (response.statusCode === 200) {
+                        if (response.statusCode === 201) {
                             console.log('Annotation sent')
                             ai.defaultClient.trackEvent({
                                 name: "AnnotationSent",
